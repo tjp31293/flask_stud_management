@@ -34,7 +34,7 @@ def stud_add():
         formdata = request.form
         if formdata:
             # Add the student
-            #stdid     = formdata.get('id')
+            stdid     = formdata.get('id')
 
             stdname   = formdata.get('name')
             stdgender = formdata.get('gender')
@@ -48,7 +48,7 @@ def stud_add():
             address   = formdata.get('address')
             username  = formdata.get('username')
             password  = formdata.get('password')
-            stud = stud_personal_info(name=stdname,gender=stdgender,
+            stud = stud_personal_info(id= stdid,name=stdname,gender=stdgender,
                                       birth_date=stdbirth,blood_group=bloodgroup,fname=fname,mobileno=phoneno,
                                       occupation=occupation,email_id=email_id,address=address,
                                       username=username,password=password)
