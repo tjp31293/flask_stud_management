@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration</title>
+</head>
+<body>
+        <form action="/stud/add" style="border:black; border-width:2px; border-style:outset;" method="post">
+            <hr><h2>Student Information</h2><hr>
+
+            Student Full Name:  <input type="text" name="name"><br><br>
+            Student Gender:
+                <input type="radio" name="gender" value="m">Male
+                <input type="radio" name="gender" value="f">Female
+                <br><br>
+            Student Birthday Date: <input type="date" name="birthday"><br><br>
+            Student Blood Group:<select name="bloodgroup">
+                    <option value="A+">A+</option>
+                    <option value="B+">B+</option>
+                    <option value="AB+">AB+</option>
+                    <option value="O+">O+</option>
+                    <option value="A-">A-</option>
+                    <option value="B-">B-</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O-">O-</option>
+            </select><br><br>
+            Father Name:<input type="text" name="fname"><br><br>
+            Phone/Mobile No:<input type="text" name="phoneno"><br><br>
+            Father Occupation:<input type="text" name="occcupation"><br><br>
+            Email-Id:<input type="text" name="emailId"><br><br>
+            Address:<textarea name="address" rows="2" cols="15"></textarea><br><br>
+            <hr>
+            <h2>Educational Information</h2>
+            <hr>
+
+            10th Marks obtain:<input type="text" name="marks">&nbsp&nbsp&nbsp&nbsp&nbsp
+            Grade:<input type="text" name="grade"><br><br>
+            Select Subject: <input type="checkbox" value="Math" name="subject">Math
+                <input type="checkbox" value="Chemistry"  name="subject">Chemistry
+                <input type="checkbox" value="Biology" name="subject">Biology
+                <input type="checkbox" value="Physics" name="subject">Physics
+                <input type="checkbox" value="Marathi" name="subject">Marathi
+                <input type="checkbox" value="English" name="subject">English
+                <input type="checkbox" value="Hindi" name="subject">Hindi<br><br>
+
+            <hr>
+            <h2>Create Username and password</h2>
+            <hr>
+            Username : <input type="text" name="username"> <br><br>
+            Password : <input type="text" name="password"> <br><br>
+            <center><input type="submit"></center><br><br>
+        </form>
+
+</body>
+</html>
