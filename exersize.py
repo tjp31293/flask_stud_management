@@ -143,4 +143,44 @@ for item in my_tup:
         x.append(ele)
 print(x)
 
-#https://github.com/tjp31293/flask_stud_management.git
+# ============ SET ========================
+print(" ***********  SET ****************")
+#Remove Duplicates from a List using Sets:
+l1 = [1, 2, 2, 3, 4, 4, 5]
+print(list(set(l1)))
+#===================
+print("================")
+print("example:-2")
+#Find the Intersection of Two Sets:
+set1 = {1, 2, 3, 4, 5}
+set2 = {3, 4, 5, 6, 7}
+result = set1.intersection(set2)
+print(result)
+#===================
+print("================")
+print("example:-3")
+#Check if a Set is a Subset of Another Set:
+set1 = {1, 2, 3}
+set2 = {1, 2, 3, 4, 5}
+print(set1.issubset(set2))
+#===================
+print("================")
+#Calculate the Union of Multiple Sets:
+print("example:-4")
+x = {1, 2, 3}
+y = {3, 4, 5}
+z = {5, 6, 7}
+x.update(y)
+x.update(z)
+print(x)
+#==========================
+#Remove Common Elements from Two Sets:
+print(" example:-4 ================ ")
+def remove_common_elements(set1, set2):
+    return set1.difference(set2)
+
+# Example usage:
+set1 = {1, 2, 3, 4, 5}
+set2 = {3, 4, 5, 6, 7}
+result_set = remove_common_elements(set1, set2)
+print(result_set)
