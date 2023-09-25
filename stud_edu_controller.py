@@ -1,6 +1,6 @@
 from student_info import *
 from flask import render_template,request
-
+from sqlalchemy.sql import exists
 
 @app.route('/', methods=['GET'])
 def start_view():
@@ -46,30 +46,52 @@ def stud_add():
             occupation= formdata.get('occcupation')
             email_id  = formdata.get('emailId')
             address   = formdata.get('address')
-            username  = formdata.get('username')
+            username = formdata.get('username')
+
+
             password  = formdata.get('password')
-            stud = stud_personal_info(name=stdname,gender=stdgender,
-                                      birth_date=stdbirth,blood_group=bloodgroup,fname=fname,mobileno=phoneno,
-                                      occupation=occupation,email_id=email_id,address=address,
-                                      username=username,password=password)
+            #stdrecord = stud_personal_info.query.filter_by(password=password).first()
+
+            exists = db.session.query(
+                db.session.query(stud_personal_info).filter_by(password=password).exists()
+            ).scalar()
+
+            if exists:
+                return render_template('view.html', msg='Password already exists..Please change the password')
+            else:
+                stud = stud_personal_info(name=stdname,gender=stdgender,
+                                  birth_date=stdbirth,blood_group=bloodgroup,fname=fname,mobileno=phoneno,
+                                  occupation=occupation,email_id=email_id,address=address,
+                                  username=username,password=password)
 
 
-            db.session.add(stud)
+                db.session.add(stud)
 
-            db.session.commit()
+                db.session.commit()
 
-            stud_tenth_marks = formdata.get('marks')
-            stud_grade = formdata.get('grade')
-            stud_subject = formdata.getlist('subject')
-            selected = ''
-            for item in stud_subject:
-                selected = selected + item + ","
-            stud_edu = stud_educational_info(stud_tenth_marks=stud_tenth_marks,edu_stud_id =stud.id,
-                                            stud_grade=stud_grade,stud_subject=selected)
+                stud_tenth_marks = formdata.get('marks')
+                stud_grade = formdata.get('grade')
+                stud_subject = formdata.getlist('subject')
+                selected = ''
+                for item in stud_subject:
+                    selected = selected + item + ","
+                stud_edu = stud_educational_info(stud_tenth_marks=stud_tenth_marks,edu_stud_id =stud.id,
+                                                stud_grade=stud_grade,stud_subject=selected)
 
 
 
-            db.session.add(stud_edu)
-            db.session.commit()
+                db.session.add(stud_edu)
+                db.session.commit()
 
-    return  render_template('view.html')
+                return  render_template('view.html',msg='Record added successufully')
+
+@app.route('/stud/sign_in',methods=['POST'])
+def stud_sign_in():
+    if request.method == 'POST':
+        formdata = request.form
+
+
+
+
+
+
