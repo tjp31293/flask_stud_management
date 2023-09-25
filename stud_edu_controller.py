@@ -48,24 +48,26 @@ def stud_add():
             address   = formdata.get('address')
             username  = formdata.get('username')
             password  = formdata.get('password')
-            stud = stud_personal_info(id= stdid,name=stdname,gender=stdgender,
+            stud = stud_personal_info(name=stdname,gender=stdgender,
                                       birth_date=stdbirth,blood_group=bloodgroup,fname=fname,mobileno=phoneno,
                                       occupation=occupation,email_id=email_id,address=address,
                                       username=username,password=password)
+
+
             db.session.add(stud)
+
             db.session.commit()
 
-
-            #edu_id = formdata.get('eduid')
-            #std_id = formdata.get('id')
             stud_tenth_marks = formdata.get('marks')
             stud_grade = formdata.get('grade')
             stud_subject = formdata.getlist('subject')
             selected = ''
             for item in stud_subject:
                 selected = selected + item + ","
-            stud_edu = stud_educational_info(stud_tenth_marks=stud_tenth_marks,
+            stud_edu = stud_educational_info(stud_tenth_marks=stud_tenth_marks,edu_stud_id =stud.id,
                                             stud_grade=stud_grade,stud_subject=selected)
+
+
 
             db.session.add(stud_edu)
             db.session.commit()

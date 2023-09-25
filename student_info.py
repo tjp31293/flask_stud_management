@@ -16,7 +16,7 @@ class stud_personal_info(db.Model):
 
 class stud_educational_info(db.Model):
     edu_id    = db.Column('edu_id', db.Integer(), primary_key=True, autoincrement=True)
-    stud_id   =  db.Column('edu_stud_id', db.ForeignKey('stud_personal_info.stud_id'), unique=True)
+    edu_stud_id   =  db.Column('edu_stud_id', db.ForeignKey('stud_personal_info.stud_id'), unique=True)
     stud_tenth_marks = db.Column('stud_tenth_marks', db.Integer())
     stud_grade = db.Column('stud_grade', db.String(30))
     stud_subject  = db.Column('stud_subject', db.String(100))
